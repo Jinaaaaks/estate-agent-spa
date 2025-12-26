@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import properties from "../data/properties.json";
 
 export default function SearchPage() {
+  console.log("SEARCH PAGE RENDERING NOW ✅");
+
   return (
     <main style={{ padding: 16 }}>
       <h1>Estate Agent</h1>
