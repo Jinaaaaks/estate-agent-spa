@@ -164,7 +164,7 @@ export default function SearchPage() {
                     placeholder="e.g. NW1"
                 />
             </div>
-            <div className="btnRow">
+            <div className="btnRow" style={{gridColumn:"1 / -1", marginTop: 8}}>
                 <button type="button" className="btn btnGhost" onClick={clearFilters}>Clear filters</button>
             </div>
 
