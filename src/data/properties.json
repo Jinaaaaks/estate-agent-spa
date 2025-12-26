@@ -9,14 +9,14 @@
     "shortDescription": "Cozy 3-bed house with a sunny garden.",
     "longDescription": "A comfortable family home with a bright living room, modern kitchen, and a private garden. Close to shops and transport.",
     "images": [
-      "/images/p1-1.jpg",
-      "/images/p1-2.jpg",
-      "/images/p1-3.jpg",
-      "/images/p1-4.jpg",
-      "/images/p1-5.jpg",
-      "/images/p1-6.jpg"
+        "/images/p1.jpeg",
+        "/images/p2.jpeg",
+        "/images/p3.jpeg",
+        "/images/p4.jpeg",
+        "/images/p5.jpeg",
+        "/images/p6.jpeg"
     ],
-    "floorPlan": "/images/p1-floorplan.jpg",
+    "floorPlan": "/floorplans/f1.jpeg",
     "location": "London"
   },
   {
@@ -29,14 +29,14 @@
     "shortDescription": "Modern 2-bed flat with city views.",
     "longDescription": "A stylish flat with open-plan living, large windows, and excellent connectivity to the city centre.",
     "images": [
-      "/images/p2-1.jpg",
-      "/images/p2-2.jpg",
-      "/images/p2-3.jpg",
-      "/images/p2-4.jpg",
-      "/images/p2-5.jpg",
-      "/images/p2-6.jpg"
+        "/images/p3.jpeg",
+        "/images/p4.jpeg",
+        "/images/p5.jpeg",
+        "/images/p6.jpeg",
+        "/images/p7.jpeg",
+        "/images/p8.jpeg"
     ],
-    "floorPlan": "/images/p2-floorplan.jpg",
+    "floorPlan": "/floorplans/f2.jpeg",
     "location": "London"
   },
   {
@@ -49,14 +49,14 @@
     "shortDescription": "Spacious bungalow with 4 bedrooms.",
     "longDescription": "A single-storey home with generous space, ideal for families who want comfort and easy accessibility.",
     "images": [
-      "/images/p3-1.jpg",
-      "/images/p3-2.jpg",
-      "/images/p3-3.jpg",
-      "/images/p3-4.jpg",
-      "/images/p3-5.jpg",
-      "/images/p3-6.jpg"
+        "/images/p2.jpeg",
+        "/images/p4.jpeg",
+        "/images/p6.jpeg",
+        "/images/p8.jpeg",
+        "/images/p1.jpeg",
+        "/images/p3.jpeg"
     ],
-    "floorPlan": "/images/p3-floorplan.jpg",
+    "floorPlan": "/floorplans/f3.jpeg",
     "location": "London"
   },
   {
@@ -69,14 +69,15 @@
     "shortDescription": "Compact starter home in a quiet street.",
     "longDescription": "Perfect for first-time buyers. Low maintenance, practical layout, and great value.",
     "images": [
-      "/images/p4-1.jpg",
-      "/images/p4-2.jpg",
-      "/images/p4-3.jpg",
-      "/images/p4-4.jpg",
-      "/images/p4-5.jpg",
-      "/images/p4-6.jpg"
+        "/images/p5.jpeg",
+        "/images/p6.jpeg",
+        "/images/p7.jpeg",
+        "/images/p8.jpeg",
+        "/images/p1.jpeg",
+        "/images/p2.jpeg"
     ],
-    "floorPlan": "/images/p4-floorplan.jpg",
+    "floorPlan": "/floorplans/f4.jpeg",
+
     "location": "Manchester"
   },
   {
@@ -89,14 +90,14 @@
     "shortDescription": "Luxury 3-bed flat near the river.",
     "longDescription": "High-end finishes, secure entry, and a beautiful view. Great amenities nearby.",
     "images": [
-      "/images/p5-1.jpg",
-      "/images/p5-2.jpg",
-      "/images/p5-3.jpg",
-      "/images/p5-4.jpg",
-      "/images/p5-5.jpg",
-      "/images/p5-6.jpg"
+        "/images/p1.jpeg",
+        "/images/p3.jpeg",
+        "/images/p5.jpeg",
+        "/images/p7.jpeg",
+        "/images/p2.jpeg",
+        "/images/p4.jpeg"
     ],
-    "floorPlan": "/images/p5-floorplan.jpg",
+    "floorPlan": "/floorplans/f1.jpeg",
     "location": "Birmingham"
   },
   {
@@ -109,14 +110,14 @@
     "shortDescription": "Bright 2-bed house with renovated kitchen.",
     "longDescription": "Recently updated kitchen and bathroom, with a comfortable layout and a small outdoor space.",
     "images": [
-      "/images/p6-1.jpg",
-      "/images/p6-2.jpg",
-      "/images/p6-3.jpg",
-      "/images/p6-4.jpg",
-      "/images/p6-5.jpg",
-      "/images/p6-6.jpg"
+        "/images/p2.jpeg",
+        "/images/p3.jpeg",
+        "/images/p6.jpeg",
+        "/images/p7.jpeg",
+        "/images/p4.jpeg",
+        "/images/p8.jpeg"
     ],
-    "floorPlan": "/images/p6-floorplan.jpg",
+    "floorPlan": "/floorplans/f2.jpeg",
     "location": "Leeds"
   },
   {
@@ -129,14 +130,14 @@
     "shortDescription": "Calm bungalow with a big backyard.",
     "longDescription": "A peaceful home with plenty of outdoor space. Ideal for relaxed living and hosting family.",
     "images": [
-      "/images/p7-1.jpg",
-      "/images/p7-2.jpg",
-      "/images/p7-3.jpg",
-      "/images/p7-4.jpg",
-      "/images/p7-5.jpg",
-      "/images/p7-6.jpg"
+        "/images/p4.jpeg",
+        "/images/p5.jpeg",
+        "/images/p6.jpeg",
+        "/images/p1.jpeg",
+        "/images/p7.jpeg",
+        "/images/p8.jpeg"
     ],
-    "floorPlan": "/images/p7-floorplan.jpg",
+    "floorPlan": "/floorplans/f3.jpeg",
     "location": "Glasgow"
   }
 ]
