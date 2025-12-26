@@ -1,3 +1,5 @@
+import "../styles/SearchPage.css";
+
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import properties from "../data/properties.json";
@@ -81,119 +83,97 @@ export default function SearchPage() {
 
 
   return (
-    <main style={{ padding: 16 }}>
-      <h1>Estate Agent</h1>
+    <main className="page">
+        <div className="header">
+            <h1 className="title">Estate Agent</h1>
+            <p className="subtle"> Showing <strong>{filtered.length}</strong> of <strong>{properties.length}</strong></p>
+        </div>
+      
 
-      <section
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: 8,
-          padding: 12,
-          marginBottom: 16
-        }}
-      >
-        <h2 style={{ marginTop: 0 }}>Search</h2>
+      <section className="card searchCard">
+        <h2 className="cardTitle">Search</h2>
 
-        <div style={{ display: "grid", gap: 10, maxWidth: 520 }}>
-          <label>
-            Type
-            <select name="type" value={filters.type} onChange={handleChange}>
-              <option value="">Any</option>
-              <option value="House">House</option>
-              <option value="Flat">Flat</option>
-              <option value="Bungalow">Bungalow</option>
-            </select>
-          </label>
-
-          <label>
-            Price range (£)
-            <div style={{ padding: "8px 6px" }}>
-                <Slider
-                range
-                min={0}
-                max={1000000}
-                step={5000}
-                value={filters.priceRange}
-                onChange={(value) =>
-                    setFilters((prev) => ({
-                    ...prev,
-                    priceRange: value
-                    }))
-                }
-                />
+        <div className="formGrid">
+            <div className="field">
+                <label>Type</label>
+                <select name="type" value={filters.type} onChange={handleChange}>
+                    <option value="">Any</option>
+                    <option value="House">House</option>
+                    <option value="Flat">Flat</option>
+                    <option value="Bungalow">Bungalow</option>
+                </select>
             </div>
-            <p style={{ margin: 0 }}>
-                £{filters.priceRange[0].toLocaleString()} to £{filters.priceRange[1].toLocaleString()}
-            </p>
-          </label>
-
-          <label>
-            Minimum bedrooms
-            <div style={{ padding: "8px 6px" }}>
-                <Slider
-                min={0}
-                max={6}
-                step={1}
-                value={filters.bedroomsMin}
-                onChange={(value) =>
-                    setFilters((prev) => ({
-                    ...prev,
-                    bedroomsMin: value
-                    }))
-                }
-                />
+            <div className="field">
+                <label>Price range (£)</label>
+                <div className="sliderWrap">
+                    <Slider
+                        range
+                        min={0}
+                        max={1000000}
+                        step={5000}
+                        value={filters.priceRange}
+                        onChange={(value) =>
+                            setFilters((prev) => ({
+                            ...prev,
+                            priceRange: value
+                            }))
+                        }
+                    />
+                </div>
+                <p className="inlineHelp">
+                    £{filters.priceRange[0].toLocaleString()} to £{filters.priceRange[1].toLocaleString()}
+                </p>
             </div>
-            <p style={{ margin: 0 }}>{filters.bedroomsMin}+</p>
-          </label>
-
-          <label>
-            Date added after
-            <div style={{ marginTop: 6 }}>
+            <div className="field">
+                <label>Minimum bedrooms</label>
+                <div className="sliderWrap">
+                    <Slider
+                        min={0}
+                        max={6}
+                        step={1}
+                        value={filters.bedroomsMin}
+                        onChange={(value) =>
+                            setFilters((prev) => ({
+                            ...prev,
+                            bedroomsMin: value
+                            }))
+                        }
+                    />
+                    <p className="inlineHelp">{filters.bedroomsMin}+</p>
+                </div>
+            </div>
+            <div className="field">
+                <label>Date added after</label>
                 <DatePicker
-                selected={filters.dateAdded}
-                onChange={(date) =>
-                    setFilters((prev) => ({
-                    ...prev,
-                    dateAdded: date
-                    }))
-                }
-                placeholderText="Select a date"
-                dateFormat="yyyy-MM-dd"
-                isClearable
+                    className="input"
+                    selected={filters.dateAdded}
+                    onChange={(date) => setFilters((prev) => ({ ...prev, dateAdded: date }))}
+                    placeholderText="Select a date"
+                    dateFormat="yyyy-MM-dd"
+                    isClearable
                 />
             </div>
-          </label>
 
+            <div className="field">
+                <label>Postcode Area</label>
+                <input
+                    className="input"
+                    name="postcode"
+                    value={filters.postcode}
+                    onChange={handleChange}
+                    placeholder="e.g. NW1"
+                />
+            </div>
+            <div className="btnRow">
+                <button type="button" className="btn btnGhost" onClick={clearFilters}>Clear filters</button>
+            </div>
 
-          <label>
-            Postcode area (first part, e.g. NW1)
-            <input
-              name="postcode"
-              value={filters.postcode}
-              onChange={handleChange}
-              placeholder="e.g. NW1"
-            />
-          </label>
-
-          <button type="button" onClick={clearFilters}>
-            Clear filters
-          </button>
         </div>
 
-        <p style={{ marginBottom: 0 }}>
-          Showing <strong>{filtered.length}</strong> of{" "}
-          <strong>{properties.length}</strong>
-        </p>
       </section>
 
-      <section
-        style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 320px",
-            gap: 16,
-            alignItems: "start"
-        }}
-        >
+      <section className="mainGrid">
+        
         {/* Results */}
         <div>
             <div style={{ display: "grid", gap: 12 }}>
@@ -259,6 +239,25 @@ export default function SearchPage() {
             Clear all
             </button>
 
+            <div
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                    e.preventDefault();
+                    const id = e.dataTransfer.getData("text/plain");
+                    if (id) removeFavourite(id);
+                }}
+                style={{
+                    marginTop: 12,
+                    padding: 12,
+                    border: "2px dashed #cc0000",
+                    borderRadius: 8,
+                    textAlign: "center",
+                    fontWeight: "bold"
+                }}
+                >
+                Drop here to remove
+            </div>
+
             <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
             {favouriteProperties.length === 0 ? (
                 <p style={{ margin: 0 }}>No favourites yet.</p>
@@ -266,10 +265,13 @@ export default function SearchPage() {
                 favouriteProperties.map((p) => (
                 <div
                     key={p.id}
+                    draggable
+                    onDragStart={(e) => e.dataTransfer.setData("text/plain", p.id)}
                     style={{
                     border: "1px solid #eee",
                     borderRadius: 8,
-                    padding: 10
+                    padding: 10,
+                    cursor: "grab"
                     }}
                 >
                     <strong>{p.type}</strong>
