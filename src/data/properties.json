@@ -1,0 +1,142 @@
+[
+  {
+    "id": "p1",
+    "type": "House",
+    "price": 450000,
+    "bedrooms": 3,
+    "dateAdded": "2025-11-12",
+    "postcode": "NW1 6XE",
+    "shortDescription": "Cozy 3-bed house with a sunny garden.",
+    "longDescription": "A comfortable family home with a bright living room, modern kitchen, and a private garden. Close to shops and transport.",
+    "images": [
+      "/images/p1-1.jpg",
+      "/images/p1-2.jpg",
+      "/images/p1-3.jpg",
+      "/images/p1-4.jpg",
+      "/images/p1-5.jpg",
+      "/images/p1-6.jpg"
+    ],
+    "floorPlan": "/images/p1-floorplan.jpg",
+    "location": "London"
+  },
+  {
+    "id": "p2",
+    "type": "Flat",
+    "price": 320000,
+    "bedrooms": 2,
+    "dateAdded": "2025-10-05",
+    "postcode": "E1 7AA",
+    "shortDescription": "Modern 2-bed flat with city views.",
+    "longDescription": "A stylish flat with open-plan living, large windows, and excellent connectivity to the city centre.",
+    "images": [
+      "/images/p2-1.jpg",
+      "/images/p2-2.jpg",
+      "/images/p2-3.jpg",
+      "/images/p2-4.jpg",
+      "/images/p2-5.jpg",
+      "/images/p2-6.jpg"
+    ],
+    "floorPlan": "/images/p2-floorplan.jpg",
+    "location": "London"
+  },
+  {
+    "id": "p3",
+    "type": "Bungalow",
+    "price": 510000,
+    "bedrooms": 4,
+    "dateAdded": "2025-09-18",
+    "postcode": "SW2 3BB",
+    "shortDescription": "Spacious bungalow with 4 bedrooms.",
+    "longDescription": "A single-storey home with generous space, ideal for families who want comfort and easy accessibility.",
+    "images": [
+      "/images/p3-1.jpg",
+      "/images/p3-2.jpg",
+      "/images/p3-3.jpg",
+      "/images/p3-4.jpg",
+      "/images/p3-5.jpg",
+      "/images/p3-6.jpg"
+    ],
+    "floorPlan": "/images/p3-floorplan.jpg",
+    "location": "London"
+  },
+  {
+    "id": "p4",
+    "type": "House",
+    "price": 275000,
+    "bedrooms": 1,
+    "dateAdded": "2025-11-25",
+    "postcode": "M1 2AB",
+    "shortDescription": "Compact starter home in a quiet street.",
+    "longDescription": "Perfect for first-time buyers. Low maintenance, practical layout, and great value.",
+    "images": [
+      "/images/p4-1.jpg",
+      "/images/p4-2.jpg",
+      "/images/p4-3.jpg",
+      "/images/p4-4.jpg",
+      "/images/p4-5.jpg",
+      "/images/p4-6.jpg"
+    ],
+    "floorPlan": "/images/p4-floorplan.jpg",
+    "location": "Manchester"
+  },
+  {
+    "id": "p5",
+    "type": "Flat",
+    "price": 610000,
+    "bedrooms": 3,
+    "dateAdded": "2025-08-30",
+    "postcode": "B1 1CD",
+    "shortDescription": "Luxury 3-bed flat near the river.",
+    "longDescription": "High-end finishes, secure entry, and a beautiful view. Great amenities nearby.",
+    "images": [
+      "/images/p5-1.jpg",
+      "/images/p5-2.jpg",
+      "/images/p5-3.jpg",
+      "/images/p5-4.jpg",
+      "/images/p5-5.jpg",
+      "/images/p5-6.jpg"
+    ],
+    "floorPlan": "/images/p5-floorplan.jpg",
+    "location": "Birmingham"
+  },
+  {
+    "id": "p6",
+    "type": "House",
+    "price": 390000,
+    "bedrooms": 2,
+    "dateAdded": "2025-12-01",
+    "postcode": "LS1 4EF",
+    "shortDescription": "Bright 2-bed house with renovated kitchen.",
+    "longDescription": "Recently updated kitchen and bathroom, with a comfortable layout and a small outdoor space.",
+    "images": [
+      "/images/p6-1.jpg",
+      "/images/p6-2.jpg",
+      "/images/p6-3.jpg",
+      "/images/p6-4.jpg",
+      "/images/p6-5.jpg",
+      "/images/p6-6.jpg"
+    ],
+    "floorPlan": "/images/p6-floorplan.jpg",
+    "location": "Leeds"
+  },
+  {
+    "id": "p7",
+    "type": "Bungalow",
+    "price": 430000,
+    "bedrooms": 3,
+    "dateAdded": "2025-10-22",
+    "postcode": "G1 9ZZ",
+    "shortDescription": "Calm bungalow with a big backyard.",
+    "longDescription": "A peaceful home with plenty of outdoor space. Ideal for relaxed living and hosting family.",
+    "images": [
+      "/images/p7-1.jpg",
+      "/images/p7-2.jpg",
+      "/images/p7-3.jpg",
+      "/images/p7-4.jpg",
+      "/images/p7-5.jpg",
+      "/images/p7-6.jpg"
+    ],
+    "floorPlan": "/images/p7-floorplan.jpg",
+    "location": "Glasgow"
+  }
+]
