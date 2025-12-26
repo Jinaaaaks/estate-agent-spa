@@ -3,16 +3,23 @@ import { Link } from "react-router-dom";
 import properties from "../data/properties.json";
 import { filterProperties } from "../utils/filterProperties";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+
+
 export default function SearchPage() {
   // This object holds what the user has typed/selected in the search form
   const [filters, setFilters] = useState({
     type: "",
-    minPrice: "",
-    maxPrice: "",
-    minBedrooms: "",
-    dateAdded: "",
+    priceRange: [0, 1000000],
+    bedroomsMin: 0,
+    dateAdded: null,
     postcode: ""
-  });
+   });
+
 
   // Helper to update one field in filters
   function handleChange(e) {
@@ -27,19 +34,31 @@ export default function SearchPage() {
 
   // Compute the filtered list whenever filters change
   const filtered = useMemo(() => {
-    return filterProperties(properties, filters);
+    const normalizedFilters = {
+        type: filters.type,
+        minPrice: filters.priceRange[0],
+        maxPrice: filters.priceRange[1],
+        minBedrooms: filters.bedroomsMin,
+        dateAdded: filters.dateAdded
+            ? filters.dateAdded.toISOString().slice(0, 10)
+            : "",
+        postcode: filters.postcode
+    };
+
+    return filterProperties(properties, normalizedFilters);
   }, [filters]);
+
 
   function clearFilters() {
     setFilters({
-      type: "",
-      minPrice: "",
-      maxPrice: "",
-      minBedrooms: "",
-      dateAdded: "",
-      postcode: ""
+        type: "",
+        priceRange: [0, 1000000],
+        bedroomsMin: 0,
+        dateAdded: null,
+        postcode: ""
     });
-  }
+  } 
+
 
   return (
     <main style={{ padding: 16 }}>
@@ -67,47 +86,64 @@ export default function SearchPage() {
           </label>
 
           <label>
-            Min price
-            <input
-              name="minPrice"
-              value={filters.minPrice}
-              onChange={handleChange}
-              placeholder="e.g. 250000"
-              type="number"
-            />
+            Price range (£)
+            <div style={{ padding: "8px 6px" }}>
+                <Slider
+                range
+                min={0}
+                max={1000000}
+                step={5000}
+                value={filters.priceRange}
+                onChange={(value) =>
+                    setFilters((prev) => ({
+                    ...prev,
+                    priceRange: value
+                    }))
+                }
+                />
+            </div>
+            <p style={{ margin: 0 }}>
+                £{filters.priceRange[0].toLocaleString()} to £{filters.priceRange[1].toLocaleString()}
+            </p>
           </label>
 
           <label>
-            Max price
-            <input
-              name="maxPrice"
-              value={filters.maxPrice}
-              onChange={handleChange}
-              placeholder="e.g. 600000"
-              type="number"
-            />
-          </label>
-
-          <label>
-            Min bedrooms
-            <input
-              name="minBedrooms"
-              value={filters.minBedrooms}
-              onChange={handleChange}
-              placeholder="e.g. 2"
-              type="number"
-            />
+            Minimum bedrooms
+            <div style={{ padding: "8px 6px" }}>
+                <Slider
+                min={0}
+                max={6}
+                step={1}
+                value={filters.bedroomsMin}
+                onChange={(value) =>
+                    setFilters((prev) => ({
+                    ...prev,
+                    bedroomsMin: value
+                    }))
+                }
+                />
+            </div>
+            <p style={{ margin: 0 }}>{filters.bedroomsMin}+</p>
           </label>
 
           <label>
             Date added after
-            <input
-              name="dateAdded"
-              value={filters.dateAdded}
-              onChange={handleChange}
-              type="date"
-            />
+            <div style={{ marginTop: 6 }}>
+                <DatePicker
+                selected={filters.dateAdded}
+                onChange={(date) =>
+                    setFilters((prev) => ({
+                    ...prev,
+                    dateAdded: date
+                    }))
+                }
+                placeholderText="Select a date"
+                dateFormat="yyyy-MM-dd"
+                isClearable
+                />
+            </div>
           </label>
+
 
           <label>
             Postcode area (first part, e.g. NW1)
