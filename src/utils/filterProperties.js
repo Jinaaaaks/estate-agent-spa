@@ -42,7 +42,7 @@ export function filterProperties(properties, filters) {
       filters.postcode &&
       !property.postcode
         .toUpperCase()
-        .startsWith(filters.postcode.toUpperCase())
+        .startsWith(filters.postcode.trim().toUpperCase())
     ) {
       return false;
     }
