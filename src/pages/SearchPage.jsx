@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
+import { useFavourites } from "../context/FavouritesContext";
 
 export default function SearchPage() {
   // This object holds what the user has typed/selected in the search form
@@ -19,6 +20,8 @@ export default function SearchPage() {
     dateAdded: null,
     postcode: ""
    });
+
+   const { favouriteIds, addFavourite, removeFavourite, clearFavourites } = useFavourites();
 
 
   // Helper to update one field in filters
@@ -58,6 +61,23 @@ export default function SearchPage() {
         postcode: ""
     });
   } 
+
+  function handleDragStartProperty(e, id) {
+    e.dataTransfer.setData("text/plain", id);
+  }
+
+  function handleDropAddToFavourites(e) {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text/plain");
+    if (id) addFavourite(id);
+  }
+
+  const favouriteProperties = useMemo(() => {
+    return favouriteIds
+        .map((id) => properties.find((p) => p.id === id))
+        .filter(Boolean);
+  }, [favouriteIds]);
+
 
 
   return (
@@ -166,34 +186,110 @@ export default function SearchPage() {
         </p>
       </section>
 
-      <section>
-        <div style={{ display: "grid", gap: 12 }}>
-          {filtered.map((p) => (
-            <article
-              key={p.id}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: 8,
-                padding: 12
-              }}
-            >
-              <h2 style={{ margin: "0 0 6px" }}>{p.type}</h2>
+      <section
+        style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 320px",
+            gap: 16,
+            alignItems: "start"
+        }}
+        >
+        {/* Results */}
+        <div>
+            <div style={{ display: "grid", gap: 12 }}>
+            {filtered.map((p) => (
+                <article
+                key={p.id}
+                draggable
+                onDragStart={(e) => handleDragStartProperty(e, p.id)}
+                style={{
+                    border: "1px solid #ddd",
+                    borderRadius: 8,
+                    padding: 12
+                }}
+                >
+                <h2 style={{ margin: "0 0 6px" }}>{p.type}</h2>
 
-              <p style={{ margin: "0 0 6px" }}>
-                <strong>£{p.price.toLocaleString()}</strong>, {p.bedrooms} bedrooms
-              </p>
+                <p style={{ margin: "0 0 6px" }}>
+                    <strong>£{p.price.toLocaleString()}</strong>, {p.bedrooms} bedrooms
+                </p>
 
-              <p style={{ margin: "0 0 6px" }}>
-                <strong>{p.postcode}</strong>
-              </p>
+                <p style={{ margin: "0 0 6px" }}>
+                    <strong>{p.postcode}</strong>
+                </p>
 
-              <p style={{ margin: "0 0 10px" }}>{p.shortDescription}</p>
+                <p style={{ margin: "0 0 10px" }}>{p.shortDescription}</p>
 
-              <Link to={`/property/${p.id}`}>View details</Link>
-            </article>
-          ))}
+                <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                    <Link to={`/property/${p.id}`}>View details</Link>
+
+                    <button
+                    type="button"
+                    onClick={() => addFavourite(p.id)}
+                    disabled={favouriteIds.includes(p.id)}
+                    title={favouriteIds.includes(p.id) ? "Already in favourites" : "Add to favourites"}
+                    >
+                    {favouriteIds.includes(p.id) ? "★ Favourited" : "☆ Favourite"}
+                    </button>
+                </div>
+                </article>
+            ))}
+            </div>
         </div>
-      </section>
+
+        {/* Favourites panel */}
+        <aside
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleDropAddToFavourites}
+            style={{
+            border: "1px solid #ddd",
+            borderRadius: 8,
+            padding: 12,
+            position: "sticky",
+            top: 12
+            }}
+        >
+            <h2 style={{ marginTop: 0 }}>Favourites</h2>
+            <p style={{ marginTop: 0 }}>
+                Drag a property here or press ☆ Favourite.
+            </p>
+
+
+            <button type="button" onClick={clearFavourites} disabled={favouriteIds.length === 0}>
+            Clear all
+            </button>
+
+            <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
+            {favouriteProperties.length === 0 ? (
+                <p style={{ margin: 0 }}>No favourites yet.</p>
+            ) : (
+                favouriteProperties.map((p) => (
+                <div
+                    key={p.id}
+                    style={{
+                    border: "1px solid #eee",
+                    borderRadius: 8,
+                    padding: 10
+                    }}
+                >
+                    <strong>{p.type}</strong>
+                    <div>£{p.price.toLocaleString()}</div>
+                    <div>{p.postcode}</div>
+
+                    <button
+                    type="button"
+                    onClick={() => removeFavourite(p.id)}
+                    style={{ marginTop: 8 }}
+                    >
+                    Remove
+                    </button>
+                </div>
+                ))
+            )}
+            </div>
+        </aside>
+        </section>
+
     </main>
   );
 }
