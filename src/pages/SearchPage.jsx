@@ -69,12 +69,7 @@ export default function SearchPage() {
     e.dataTransfer.effectAllowed= "move";
   }
 
-  function handleDropAddToFavourites(e) {
-    e.preventDefault();
-    const id = e.dataTransfer.getData("text/plain");
-    if (id) addFavourite(id);
-  }
-
+  
   const favouriteProperties = useMemo(() => {
     return favouriteIds
         .map((id) => properties.find((p) => p.id === id))
@@ -226,8 +221,6 @@ export default function SearchPage() {
 
         {/* Favourites panel */}
         <aside
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDropAddToFavourites}
             style={{
             border: "1px solid #ddd",
             borderRadius: 8,
@@ -252,16 +245,7 @@ export default function SearchPage() {
                 <p style={{ margin: 0 }}>No favourites yet.</p>
             ) : (
                 favouriteProperties.map((p) => (
-                <div
-                    key={p.id}
-                    draggable
-                    onDragStart={(e) => handleDragStartFavourite(e, p.id)}
-                    style={{
-                    border: "1px solid #eee",
-                    borderRadius: 8,
-                    padding: 10,
-                    }}
-                >
+                <div>
                     <strong>{p.type}</strong>
                     <div>£{p.price.toLocaleString()}</div>
                     <div>{p.postcode}</div>
