@@ -65,7 +65,8 @@ export default function SearchPage() {
   } 
 
   function handleDragStartProperty(e, id) {
-    e.dataTransfer.setData("text/plain", id);
+    e.dataTransfer.setData("text/plain", String(id));
+    e.dataTransfer.effectAllowed= "move";
   }
 
   function handleDropAddToFavourites(e) {
@@ -181,11 +182,17 @@ export default function SearchPage() {
                 <article
                 key={p.id}
                 draggable
-                onDragStart={(e) => handleDragStartProperty(e, p.id)}
+                onDragStart={(e) => {
+                    e.dataTransfer.effectAllowed = "move";
+                    handleDragStartProperty(e, p.id);
+                }}
+
                 style={{
                     border: "1px solid #ddd",
                     borderRadius: 8,
-                    padding: 12
+                    padding: 12,
+                    userSelect: "none",
+                    cursor: "grab"
                 }}
                 >
                 <h2 style={{ margin: "0 0 6px" }}>{p.type}</h2>
@@ -239,25 +246,7 @@ export default function SearchPage() {
             Clear all
             </button>
 
-            <div
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => {
-                    e.preventDefault();
-                    const id = e.dataTransfer.getData("text/plain");
-                    if (id) removeFavourite(id);
-                }}
-                style={{
-                    marginTop: 12,
-                    padding: 12,
-                    border: "2px dashed #cc0000",
-                    borderRadius: 8,
-                    textAlign: "center",
-                    fontWeight: "bold"
-                }}
-                >
-                Drop here to remove
-            </div>
-
+            
             <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
             {favouriteProperties.length === 0 ? (
                 <p style={{ margin: 0 }}>No favourites yet.</p>
@@ -266,12 +255,11 @@ export default function SearchPage() {
                 <div
                     key={p.id}
                     draggable
-                    onDragStart={(e) => e.dataTransfer.setData("text/plain", p.id)}
+                    onDragStart={(e) => handleDragStartFavourite(e, p.id)}
                     style={{
                     border: "1px solid #eee",
                     borderRadius: 8,
                     padding: 10,
-                    cursor: "grab"
                     }}
                 >
                     <strong>{p.type}</strong>
