@@ -275,3 +275,63 @@
   transform: translateY(-1px);
   transition: transform 120ms ease;
 }
+
+/*for the property page */
+.metaRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mainImg {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #e9e9e9;
+  overflow: hidden;
+  background: #fff;
+}
+
+.mainImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .thumbs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.thumbBtn {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+}
+
+.thumbBtn img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbActive {
+  outline: 3px solid rgba(0, 0, 0, 0.1);
+}

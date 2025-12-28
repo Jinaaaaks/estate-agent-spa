@@ -14,7 +14,7 @@ import "rc-slider/assets/index.css";
 import { useFavourites } from "../context/FavouritesContext";
 
 export default function SearchPage() {
-  // This object holds what the user has typed/selected in the search form
+  // The object holds what the user has typed/selected in the search form
   const [filters, setFilters] = useState({
     type: "",
     priceRange: [0, 1000000],
@@ -26,7 +26,7 @@ export default function SearchPage() {
    const { favouriteIds, addFavourite, removeFavourite, clearFavourites } = useFavourites();
 
 
-  // Helper to update one field in filters
+  // Helps to update one field in filters
   function handleChange(e) {
     const { name, value } = e.target;
 
