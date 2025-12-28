@@ -113,7 +113,7 @@
 }
 
 .btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -249,6 +249,11 @@
   background: #fff;
 }
 
+.favItem .btn {
+  margin-top: 10px;
+}
+
+
 .favItem strong {
   display: block;
   margin-bottom: 6px;
@@ -262,4 +267,11 @@
 /* Slider spacing */
 .sliderWrap {
   padding: 8px 6px;
+}
+
+/* hover lift the cards*/
+.resultCard:hover,
+.favItem:hover {
+  transform: translateY(-1px);
+  transition: transform 120ms ease;
 }

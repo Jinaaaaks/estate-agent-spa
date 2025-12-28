@@ -169,44 +169,43 @@ export default function SearchPage() {
       </section>
 
       <section className="mainGrid">
-        
         {/* Results */}
         <div>
-            <div style={{ display: "grid", gap: 12 }}>
+            <div className="resultsGrid">
             {filtered.map((p) => (
                 <article
                 key={p.id}
+                className="resultCard"
                 draggable
                 onDragStart={(e) => {
                     e.dataTransfer.effectAllowed = "move";
                     handleDragStartProperty(e, p.id);
                 }}
-
-                style={{
-                    border: "1px solid #ddd",
-                    borderRadius: 8,
-                    padding: 12,
-                    userSelect: "none",
-                    cursor: "grab"
-                }}
                 >
-                <h2 style={{ margin: "0 0 6px" }}>{p.type}</h2>
+                <div className="resultTop">
+                    <div>
+                    <h2 className="resultTitle">{p.type}</h2>
 
-                <p style={{ margin: "0 0 6px" }}>
-                    <strong>£{p.price.toLocaleString()}</strong>, {p.bedrooms} bedrooms
-                </p>
+                    <p className="resultMeta">
+                        <strong>£{p.price.toLocaleString()}</strong>, {p.bedrooms} bedrooms
+                    </p>
 
-                <p style={{ margin: "0 0 6px" }}>
-                    <strong>{p.postcode}</strong>
-                </p>
+                    <p className="resultMeta">
+                        <span className="badge">{p.postcode}</span>
+                    </p>
+                    </div>
+                </div>
 
-                <p style={{ margin: "0 0 10px" }}>{p.shortDescription}</p>
+                <p className="desc">{p.shortDescription}</p>
 
-                <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                    <Link to={`/property/${p.id}`}>View details</Link>
+                <div className="actionsRow">
+                    <Link className="link" to={`/property/${p.id}`}>
+                    View details
+                    </Link>
 
                     <button
                     type="button"
+                    className="btn"
                     onClick={() => addFavourite(p.id)}
                     disabled={favouriteIds.includes(p.id)}
                     title={favouriteIds.includes(p.id) ? "Already in favourites" : "Add to favourites"}
@@ -220,38 +219,37 @@ export default function SearchPage() {
         </div>
 
         {/* Favourites panel */}
-        <aside
-            style={{
-            border: "1px solid #ddd",
-            borderRadius: 8,
-            padding: 12,
-            position: "sticky",
-            top: 12
-            }}
-        >
-            <h2 style={{ marginTop: 0 }}>Favourites</h2>
-            <p style={{ marginTop: 0 }}>
-                Press ☆ Favourite to save properties.
+        <aside className="card sidebar">
+            <h2 className="cardTitle">Favourites</h2>
+
+            <p className="small">
+            Press ☆ Favourite to save properties.
             </p>
 
-
-            <button type="button" onClick={clearFavourites} disabled={favouriteIds.length === 0}>
-            Clear all
+            <div className="btnRow">
+            <button
+                type="button"
+                className="btn btnGhost"
+                onClick={clearFavourites}
+                disabled={favouriteIds.length === 0}
+            >
+                Clear all
             </button>
+            </div>
 
-            
-            <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
+            <div className="favList">
             {favouriteProperties.length === 0 ? (
-                <p style={{ margin: 0 }}>No favourites yet.</p>
+                <p className="small">No favourites yet.</p>
             ) : (
                 favouriteProperties.map((p) => (
-                <div>
+                <div key={p.id} className="favItem">
                     <strong>{p.type}</strong>
                     <div>£{p.price.toLocaleString()}</div>
-                    <div>{p.postcode}</div>
+                    <div className="small">{p.postcode}</div>
 
                     <button
                     type="button"
+                    className="btn"
                     onClick={() => removeFavourite(p.id)}
                     style={{ marginTop: 8 }}
                     >
@@ -262,7 +260,7 @@ export default function SearchPage() {
             )}
             </div>
         </aside>
-        </section>
+    </section>
 
     </main>
   );
