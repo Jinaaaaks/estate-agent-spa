@@ -231,7 +231,7 @@ export default function SearchPage() {
         >
             <h2 style={{ marginTop: 0 }}>Favourites</h2>
             <p style={{ marginTop: 0 }}>
-                Drag a property here or press ☆ Favourite.
+                Press ☆ Favourite to save properties.
             </p>
 
 
