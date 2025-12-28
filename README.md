@@ -26,7 +26,5 @@ Users can search, filter, view, and favourite properties using a clean and respo
 - Jest (unit testing)
 - CSS (custom styling)
 
----
 
-## 📁 Project Structure
 
