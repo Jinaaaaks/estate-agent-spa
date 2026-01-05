@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/estate-agent-spa/static/css/main.7e257c06.css",
+    "main.js": "/estate-agent-spa/static/js/main.8b29225e.js",
+    "index.html": "/estate-agent-spa/index.html",
+    "main.7e257c06.css.map": "/estate-agent-spa/static/css/main.7e257c06.css.map",
+    "main.8b29225e.js.map": "/estate-agent-spa/static/js/main.8b29225e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e257c06.css",
+    "static/js/main.8b29225e.js"
+  ]
+}
